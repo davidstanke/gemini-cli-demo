@@ -58,21 +58,21 @@ if [ "$DESC" == "update codebase" ] || [ "$DESC" == "null" ] || [ -z "$DESC" ]; 
 fi
 
 # Smarter type detection based on DESC
-if [[ "$DESC" =~ (fix|bug|issue|correct|error|patch) ]]; then
+if echo "$DESC" | grep -iqE "\b(fix|bug|issue|correct|error|patch)\b"; then
   TYPE="fix"
-elif [[ "$DESC" =~ (add|create|new|implement|feat|introduce) ]]; then
+elif echo "$DESC" | grep -iqE "\b(add|create|new|implement|feat|introduce)\b"; then
   TYPE="feat"
-elif [[ "$DESC" =~ (refactor|clean|move|organize|restructure) ]]; then
+elif echo "$DESC" | grep -iqE "\b(refactor|clean|move|organize|restructure)\b"; then
   TYPE="refactor"
-elif [[ "$DESC" =~ (test|spec|assert|vitest|jest) ]]; then
-  TYPE="test"
-elif [[ "$DESC" =~ (docs|comment|readme|manual) ]]; then
+elif echo "$DESC" | grep -iqE "\b(docs|comment|readme|manual|document)\b"; then
   TYPE="docs"
-elif [[ "$DESC" =~ (style|format|lint|prettier) ]]; then
+elif echo "$DESC" | grep -iqE "\b(test|spec|assert|vitest|jest)\b"; then
+  TYPE="test"
+elif echo "$DESC" | grep -iqE "\b(style|format|lint|prettier)\b"; then
   TYPE="style"
-elif [[ "$DESC" =~ (perf|optimize|speed|efficient) ]]; then
+elif echo "$DESC" | grep -iqE "\b(perf|optimize|speed|efficient)\b"; then
   TYPE="perf"
-elif [[ "$DESC" =~ (build|ci|cd|workflow|npm|package|dependency|install|setup) ]]; then
+elif echo "$DESC" | grep -iqE "\b(build|ci|cd|workflow|npm|package|dependency|install|setup)\b"; then
   TYPE="build"
 fi
 
