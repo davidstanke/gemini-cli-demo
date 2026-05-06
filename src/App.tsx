@@ -29,6 +29,10 @@ export default function App() {
   const [loading, setLoading] = useState(false);
   const [activeRecipe, setActiveRecipe] = useState<Recipe | null>(null);
   const [searchQuery, setSearchQuery] = useState('');
+  const [hoveredTooltip, setHoveredTooltip] = useState<{ 
+    description: string; 
+    rect: DOMRect; 
+  } | null>(null);
 
   useEffect(() => {
     getSpecials().then(setSpecials);
