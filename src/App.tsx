@@ -325,21 +325,25 @@ export default function App() {
       </main>
 
       {hoveredTooltip && createPortal(
-        <motion.div 
-          initial={{ opacity: 0, y: 5 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="fixed z-[9999] pointer-events-none w-64"
+        <div 
+          className="fixed z-[9999] pointer-events-none"
           style={{ 
             top: hoveredTooltip.rect.top - 8,
             left: hoveredTooltip.rect.left + (hoveredTooltip.rect.width / 2),
-            transform: 'translateX(-50%) translateY(-100%)'
+            transform: 'translate(-50%, -100%)'
           }}
         >
-          <div className="p-3 bg-[#1D1D1D] text-white text-[11px] leading-relaxed rounded-xl shadow-2xl border border-white/10 relative">
-            {hoveredTooltip.description}
-            <div className="absolute top-full left-1/2 -ml-2 border-8 border-transparent border-t-[#1D1D1D]" />
-          </div>
-        </motion.div>,
+          <motion.div 
+            initial={{ opacity: 0, y: 5 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="w-64"
+          >
+            <div className="p-3 bg-[#1D1D1D] text-white text-[11px] leading-relaxed rounded-xl shadow-2xl border border-white/10 relative">
+              {hoveredTooltip.description}
+              <div className="absolute top-full left-1/2 -ml-2 border-8 border-transparent border-t-[#1D1D1D]" />
+            </div>
+          </motion.div>
+        </div>,
         document.body
       )}
 
