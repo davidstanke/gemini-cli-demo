@@ -149,7 +149,13 @@ export default function App() {
                       <CheckCircle2 size={16} className="text-[#4A7C59]" />
                     )}
                   </div>
-                  <h3 className="font-semibold text-[#2D3A3A] mb-2">{item.name}</h3>
+                  <div className="relative group/tooltip">
+                    <h3 className="font-semibold text-[#2D3A3A] mb-2 cursor-help">{item.name}</h3>
+                    <div className="absolute bottom-full left-0 mb-2 w-64 p-3 bg-[#2D3A3A] text-white text-xs rounded-xl opacity-0 invisible group-hover/tooltip:opacity-100 group-hover/tooltip:visible transition-all z-50 shadow-xl pointer-events-none">
+                      {item.description}
+                      <div className="absolute top-full left-4 border-8 border-transparent border-t-[#2D3A3A]" />
+                    </div>
+                  </div>
                   <div className="flex items-baseline gap-2">
                     <span className="text-lg font-bold text-[#4A7C59]">${item.salePrice.toFixed(2)}</span>
                     <span className="text-xs text-[#8C7A6B] line-through">${item.originalPrice.toFixed(2)}</span>
