@@ -154,13 +154,16 @@ export default function App() {
                       <CheckCircle2 size={16} className="text-[#4A7C59]" />
                     )}
                   </div>
-                  <div className="relative group">
-                    <h3 className="font-semibold text-[#2D3A3A] mb-2 cursor-help">{item.name}</h3>
-                    <div className="absolute bottom-full left-0 mb-2 w-64 p-3 bg-[#1D1D1D] text-white text-[11px] leading-relaxed rounded-xl opacity-0 group-hover:opacity-100 transition-opacity z-50 shadow-2xl pointer-events-none border border-white/10">
-                      {item.description}
-                      <div className="absolute top-full left-4 border-8 border-transparent border-t-[#1D1D1D]" />
-                    </div>
-                  </div>
+                  <h3 
+                    className="font-semibold text-[#2D3A3A] mb-2 cursor-help"
+                    onMouseEnter={(e) => {
+                      const rect = e.currentTarget.getBoundingClientRect();
+                      setHoveredTooltip({ description: item.description, rect });
+                    }}
+                    onMouseLeave={() => setHoveredTooltip(null)}
+                  >
+                    {item.name}
+                  </h3>
                   <div className="flex items-baseline gap-2">
                     <span className="text-lg font-bold text-[#4A7C59]">${item.salePrice.toFixed(2)}</span>
                     <span className="text-xs text-[#8C7A6B] line-through">${item.originalPrice.toFixed(2)}</span>
