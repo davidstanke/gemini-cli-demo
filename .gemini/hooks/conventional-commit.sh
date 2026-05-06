@@ -3,10 +3,9 @@ set -e
 
 # Read hook input
 INPUT=$(cat)
-echo "$INPUT" > .gemini/hook_input_debug.json
 
 # Extract tool name
-TOOL=$(echo "$INPUT" | jq -r '.tool' 2>/dev/null || echo "unknown")
+TOOL=$(echo "$INPUT" | jq -r '.tool_name' 2>/dev/null || echo "unknown")
 
 # Add changes to staging
 git add .
@@ -23,14 +22,14 @@ DESC="update codebase"
 
 # Try to find a good description from tool arguments
 if [ "$TOOL" == "replace" ]; then
-  DESC=$(echo "$INPUT" | jq -r '.arguments.instruction' 2>/dev/null)
+  DESC=$(echo "$INPUT" | jq -r '.tool_input.instruction' 2>/dev/null)
 elif [ "$TOOL" == "run_shell_command" ]; then
-  DESC=$(echo "$INPUT" | jq -r '.arguments.description' 2>/dev/null)
+  DESC=$(echo "$INPUT" | jq -r '.tool_input.description' 2>/dev/null)
   if [ "$DESC" == "null" ] || [ -z "$DESC" ]; then
-    DESC=$(echo "$INPUT" | jq -r '.arguments.command' 2>/dev/null)
+    DESC=$(echo "$INPUT" | jq -r '.tool_input.command' 2>/dev/null)
   fi
 elif [ "$TOOL" == "write_file" ]; then
-  FILE_PATH=$(echo "$INPUT" | jq -r '.arguments.file_path' 2>/dev/null)
+  FILE_PATH=$(echo "$INPUT" | jq -r '.tool_input.file_path' 2>/dev/null)
   if [ -n "$FILE_PATH" ] && [ "$FILE_PATH" != "null" ]; then
     if git rev-parse --verify "HEAD:$FILE_PATH" >/dev/null 2>&1; then
       DESC="update $FILE_PATH"
