@@ -44,6 +44,7 @@ export default function App() {
   /**
    * Randomly selects up to 3 ingredients from the available specials.
    * This is a second test comment.
+   * Third test.
    */
   const handleLucky = () => {
     if (specials.length === 0) return;
