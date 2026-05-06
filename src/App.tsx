@@ -40,18 +40,6 @@ export default function App() {
     setSelectedItems(next);
   };
 
-  /**
-   * Randomly selects up to 3 ingredients from the available specials.
-   * Uses a shuffle and slice approach for quick randomization.
-   */
-  const handleLucky = () => {
-    if (specials.length === 0) return;
-    const count = Math.min(3, specials.length);
-    const shuffled = [...specials].sort(() => 0.5 - Math.random());
-    const selected = shuffled.slice(0, count).map(s => s.id);
-    setSelectedItems(new Set(selected));
-  };
-
   const handleSuggest = async () => {
     if (selectedItems.size === 0) return;
     
