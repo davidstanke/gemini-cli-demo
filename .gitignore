@@ -144,3 +144,5 @@ vite.config.ts.timestamp-*
 
 # Playwright testing
 .playwright-mcp
+.gemini/
+gha-creds-*.json
