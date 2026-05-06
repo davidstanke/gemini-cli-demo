@@ -331,13 +331,13 @@ export default function App() {
           className="fixed z-[9999] pointer-events-none"
           style={{ 
             top: hoveredTooltip.rect.top - 8,
-            left: hoveredTooltip.rect.left,
-            transform: 'translateY(-100%)'
+            left: hoveredTooltip.rect.left + (hoveredTooltip.rect.width / 2),
+            transform: 'translate(-50%, -100%)'
           }}
         >
-          <div className="w-64 p-3 bg-[#1D1D1D] text-white text-[11px] leading-relaxed rounded-xl shadow-2xl border border-white/10">
+          <div className="w-64 p-3 bg-[#1D1D1D] text-white text-[11px] leading-relaxed rounded-xl shadow-2xl border border-white/10 relative">
             {hoveredTooltip.description}
-            <div className="absolute top-full left-4 border-8 border-transparent border-t-[#1D1D1D]" />
+            <div className="absolute top-full left-1/2 -ml-2 border-8 border-transparent border-t-[#1D1D1D]" />
           </div>
         </motion.div>,
         document.body
