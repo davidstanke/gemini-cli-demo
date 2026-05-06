@@ -3,6 +3,7 @@ set -e
 
 # Read hook input
 INPUT=$(cat)
+echo "$INPUT" > /tmp/hook_input.json
 
 # Extract tool name
 TOOL=$(echo "$INPUT" | jq -r '.tool' 2>/dev/null || echo "unknown")
