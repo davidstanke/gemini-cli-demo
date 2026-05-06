@@ -24,7 +24,7 @@ describe('Ingredient Tooltips', () => {
     await screen.findByText('Organic Hass Avocados');
     
     // Find the help icon (using aria-label for accessibility)
-    const helpIcon = screen.getAllByLabelByText ? null : screen.getByLabelText(/more information/i);
+    const helpIcon = screen.getByLabelText(/more information/i);
     
     // Simulate hover
     fireEvent.mouseOver(helpIcon);
