@@ -315,6 +315,25 @@ export default function App() {
         </div>
       </main>
 
+      {hoveredTooltip && createPortal(
+        <motion.div 
+          initial={{ opacity: 0, y: 5 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="fixed z-[9999] pointer-events-none"
+          style={{ 
+            top: hoveredTooltip.rect.top - 8,
+            left: hoveredTooltip.rect.left,
+            transform: 'translateY(-100%)'
+          }}
+        >
+          <div className="w-64 p-3 bg-[#1D1D1D] text-white text-[11px] leading-relaxed rounded-xl shadow-2xl border border-white/10">
+            {hoveredTooltip.description}
+            <div className="absolute top-full left-4 border-8 border-transparent border-t-[#1D1D1D]" />
+          </div>
+        </motion.div>,
+        document.body
+      )}
+
       <style>{`
         .custom-scrollbar::-webkit-scrollbar {
           width: 4px;
