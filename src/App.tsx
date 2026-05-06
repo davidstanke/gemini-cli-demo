@@ -41,6 +41,9 @@ export default function App() {
     setSelectedItems(next);
   };
 
+  /**
+   * Randomly selects up to 3 ingredients from the available specials.
+   */
   const handleLucky = () => {
     if (specials.length === 0) return;
     const count = Math.min(3, specials.length);
