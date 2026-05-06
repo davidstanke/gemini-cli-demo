@@ -4,6 +4,7 @@ export interface SpecialItem {
   originalPrice: number;
   salePrice: number;
   category: 'Produce' | 'Meat & Seafood' | 'Dairy & Eggs' | 'Pantry' | 'Bakery';
+  description: string;
   imagePlaceholder?: string;
 }
 
