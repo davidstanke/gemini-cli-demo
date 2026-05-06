@@ -1,0 +1,16 @@
+{
+  "hooks": {
+    "AfterTool": [
+      {
+        "matcher": "write_file|replace",
+        "hooks": [
+          {
+            "name": "conventional-commit",
+            "type": "command",
+            "command": "bash .gemini/hooks/conventional-commit.sh"
+          }
+        ]
+      }
+    ]
+  }
+}
