@@ -328,14 +328,14 @@ export default function App() {
         <motion.div 
           initial={{ opacity: 0, y: 5 }}
           animate={{ opacity: 1, y: 0 }}
-          className="fixed z-[9999] pointer-events-none"
+          className="fixed z-[9999] pointer-events-none w-64"
           style={{ 
             top: hoveredTooltip.rect.top - 8,
             left: hoveredTooltip.rect.left + (hoveredTooltip.rect.width / 2),
-            transform: 'translate(-50%, -100%)'
+            transform: 'translateX(-50%) translateY(-100%)'
           }}
         >
-          <div className="w-64 p-3 bg-[#1D1D1D] text-white text-[11px] leading-relaxed rounded-xl shadow-2xl border border-white/10 relative">
+          <div className="p-3 bg-[#1D1D1D] text-white text-[11px] leading-relaxed rounded-xl shadow-2xl border border-white/10 relative">
             {hoveredTooltip.description}
             <div className="absolute top-full left-1/2 -ml-2 border-8 border-transparent border-t-[#1D1D1D]" />
           </div>
