@@ -109,6 +109,13 @@ export default function App() {
               />
             </div>
             <button 
+              onClick={handleLucky}
+              className="px-4 py-2.5 rounded-full font-semibold text-sm flex items-center gap-2 bg-[#F3F0ED] text-[#8C7A6B] hover:bg-[#E5E1DD] transition-all border border-[#EEE7E1]"
+            >
+              <Dices size={16} />
+              I Feel Lucky
+            </button>
+            <button 
               onClick={handleSuggest}
               disabled={selectedItems.size === 0 || loading}
               className={`
