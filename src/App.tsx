@@ -149,11 +149,11 @@ export default function App() {
                       <CheckCircle2 size={16} className="text-[#4A7C59]" />
                     )}
                   </div>
-                  <div className="relative group/tooltip">
+                  <div className="relative group">
                     <h3 className="font-semibold text-[#2D3A3A] mb-2 cursor-help">{item.name}</h3>
-                    <div className="absolute bottom-full left-0 mb-2 w-64 p-3 bg-[#2D3A3A] text-white text-xs rounded-xl opacity-0 invisible group-hover/tooltip:opacity-100 group-hover/tooltip:visible transition-all z-50 shadow-xl pointer-events-none">
+                    <div className="absolute bottom-full left-0 mb-2 w-64 p-3 bg-[#1D1D1D] text-white text-[11px] leading-relaxed rounded-xl opacity-0 group-hover:opacity-100 transition-opacity z-50 shadow-2xl pointer-events-none border border-white/10">
                       {item.description}
-                      <div className="absolute top-full left-4 border-8 border-transparent border-t-[#2D3A3A]" />
+                      <div className="absolute top-full left-4 border-8 border-transparent border-t-[#1D1D1D]" />
                     </div>
                   </div>
                   <div className="flex items-baseline gap-2">
