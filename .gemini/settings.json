@@ -2,7 +2,7 @@
   "hooks": {
     "AfterTool": [
       {
-        "matcher": "write_file|replace",
+        "matcher": "(write_file|replace)",
         "hooks": [
           {
             "name": "conventional-commit",

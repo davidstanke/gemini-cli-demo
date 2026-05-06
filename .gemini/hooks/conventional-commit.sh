@@ -21,6 +21,8 @@ fi
 TYPE="chore"
 DESC="update codebase"
 
+echo "Running conventional-commit hook for tool: $TOOL" >&2
+
 if [ "$TOOL" == "replace" ]; then
   INSTRUCTION=$(echo "$INPUT" | jq -r '.arguments.instruction' 2>/dev/null)
   if [ -n "$INSTRUCTION" ] && [ "$INSTRUCTION" != "null" ]; then
