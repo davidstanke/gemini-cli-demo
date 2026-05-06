@@ -15,8 +15,7 @@ import {
   Tag,
   Clock,
   CheckCircle2,
-  UtensilsCrossed,
-  Dices
+  UtensilsCrossed
 } from 'lucide-react';
 import { getSpecials } from './services/mockSpecials';
 import { suggestRecipes, generateRecipeImage } from './services/geminiService';
