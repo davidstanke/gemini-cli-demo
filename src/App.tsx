@@ -43,7 +43,7 @@ export default function App() {
 
   /**
    * Randomly selects up to 3 ingredients from the available specials.
-   * Uses a shuffle and slice approach for randomization.
+   * Uses a shuffle and slice approach for quick randomization.
    */
   const handleLucky = () => {
     if (specials.length === 0) return;
