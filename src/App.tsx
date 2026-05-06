@@ -142,29 +142,33 @@ export default function App() {
                   className={`
                     group cursor-pointer relative p-4 rounded-2xl border-2 transition-all duration-300
                     ${selectedItems.has(item.id) 
-                      ? 'bg-[#E2F1E7] border-[#4A7C59]' 
-                      : 'bg-white border-[#F3F0ED] hover:border-[#DED6CF] hover:shadow-sm'}
-                  `}
-                >
-                  <div className="flex justify-between items-start mb-2">
-                    <span className="text-[10px] font-bold uppercase tracking-wider text-[#8C7A6B]">
-                      {item.category}
-                    </span>
-                    {selectedItems.has(item.id) && (
-                      <CheckCircle2 size={16} className="text-[#4A7C59]" />
-                    )}
-                  </div>
-                  <h3 
-                    className="font-semibold text-[#2D3A3A] mb-2 cursor-help"
-                    onMouseEnter={(e) => {
-                      const rect = e.currentTarget.getBoundingClientRect();
-                      setHoveredTooltip({ description: item.description, rect });
-                    }}
-                    onMouseLeave={() => setHoveredTooltip(null)}
-                  >
-                    {item.name}
-                  </h3>
-                  <div className="flex items-baseline gap-2">
+                      CheckCircle2,
+                      UtensilsCrossed,
+                      HelpCircle
+                      } from 'lucide-react';
+                      ...
+                                      <div className="flex justify-between items-start mb-2">
+                                        <span className="text-[10px] font-bold uppercase tracking-wider text-[#8C7A6B]">
+                                          {item.category}
+                                        </span>
+                                        <div className="flex items-center gap-2">
+                                          <HelpCircle 
+                                            size={14} 
+                                            aria-label="More information"
+                                            className="text-[#8C7A6B] hover:text-[#4A7C59] transition-colors cursor-help"
+                                            onMouseEnter={(e) => {
+                                              const rect = e.currentTarget.getBoundingClientRect();
+                                              setHoveredTooltip({ description: item.description, rect });
+                                            }}
+                                            onMouseLeave={() => setHoveredTooltip(null)}
+                                          />
+                                          {selectedItems.has(item.id) && (
+                                            <CheckCircle2 size={16} className="text-[#4A7C59]" />
+                                          )}
+                                        </div>
+                                      </div>
+                                      <h3 className="font-semibold text-[#2D3A3A] mb-2">{item.name}</h3>
+                                      <div className="flex items-baseline gap-2">
                     <span className="text-lg font-bold text-[#4A7C59]">${item.salePrice.toFixed(2)}</span>
                     <span className="text-xs text-[#8C7A6B] line-through">${item.originalPrice.toFixed(2)}</span>
                     <span className="ml-auto text-[10px] font-bold text-white bg-[#D45D5D] px-2 py-0.5 rounded-full">
