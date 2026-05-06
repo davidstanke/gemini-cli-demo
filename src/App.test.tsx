@@ -17,14 +17,17 @@ vi.mock('./services/mockSpecials', () => ({
 }));
 
 describe('Ingredient Tooltips', () => {
-  it('shows a tooltip with the description when hovering over an ingredient name', async () => {
+  it('shows a tooltip with the description when hovering over the help icon', async () => {
     render(<App />);
     
     // Wait for specials to load
-    const ingredientName = await screen.findByText('Organic Hass Avocados');
+    await screen.findByText('Organic Hass Avocados');
+    
+    // Find the help icon (using aria-label for accessibility)
+    const helpIcon = screen.getAllByLabelByText ? null : screen.getByLabelText(/more information/i);
     
     // Simulate hover
-    fireEvent.mouseOver(ingredientName);
+    fireEvent.mouseOver(helpIcon);
     
     // Check for tooltip description
     const description = screen.getByText(/Creamy, nutrient-dense avocados/i);
